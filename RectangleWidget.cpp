@@ -136,8 +136,10 @@ void RectangleWidget::mouseReleaseEvent(QMouseEvent *event){
 
     if(event->button() == Qt::LeftButton){
 
-    processScreenshot();
-}
+        this->parentWidget()->parentWidget()->setWindowOpacity(0.001);
+        processScreenshot();
+        this->parentWidget()->parentWidget()->setWindowOpacity(settings.value("general/opacity").toDouble());
+    }
 
 
 
@@ -156,7 +158,6 @@ void RectangleWidget::processScreenshot(){
 
         frame->hide();
 
-        this->parentWidget()->parentWidget()->hide();
 
 
         #ifndef WIN32
@@ -179,6 +180,7 @@ void RectangleWidget::processScreenshot(){
         ScreenShot(r.x() + frame->pos().x(), r.y() + frame->pos().y(), frame->size().width() - 2, frame->size().height() - 2); // take the screenshot
 
 
+        this->parentWidget()->parentWidget()->hide();
 
         int quality;
 

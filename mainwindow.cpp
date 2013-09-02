@@ -80,7 +80,7 @@ void MainWindow::setupPosition(){
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setAttribute(Qt::WA_NoSystemBackground,false);
     #ifdef WIN32
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool);
     #endif
     this->setWindowOpacity(settings.value("general/opacity").toDouble());
     this->setAutoFillBackground(false);
